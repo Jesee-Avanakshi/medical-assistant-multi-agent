@@ -12,9 +12,11 @@ def recommend_doctors(state: MedicalState) -> MedicalState:
         FROM doctors
         WHERE specialization = ? AND city = ?
         ORDER BY experience DESC
-    """, (state["department"].lower(), state["location"]))
+    """,(state["department"].lower(), state["location"]))
+
 
     rows = cursor.fetchall()
+    print("🔍 RAW LLM OUTPUT doctors:\n", rows)
     conn.close()
 
     state["doctors"] = [
@@ -27,4 +29,5 @@ def recommend_doctors(state: MedicalState) -> MedicalState:
         }
         for r in rows
     ]
+    print("🔍 RAW LLM OUTPUT doctors:\n", rows)
     return state
