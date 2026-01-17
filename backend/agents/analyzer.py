@@ -76,7 +76,7 @@ Medical Report:
     response = llm.invoke(prompt)
     raw_output = response.content.strip()
 
-    print("🔍 RAW LLM OUTPUT:\n", raw_output)
+    print("🔍  RAW LLM OUTPUT:\n", raw_output)
     try:
         result = safe_json_parse(raw_output)
     except Exception as e:
